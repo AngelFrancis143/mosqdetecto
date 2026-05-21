@@ -75,18 +75,22 @@
     height: 120px;
   }
 
-  .submit-btn {
+  .submit-btn, .google-form-btn {
+    display: inline-block;
     background-color: darkgreen;
     color: white;
+    text-decoration: none;
     border: none;
     padding: 12px 20px;
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s;
+    text-align: center;
+    box-sizing: border-box;
   }
 
-  .submit-btn:hover {
+  .submit-btn:hover, .google-form-btn:hover {
     background-color: #004d00;
   }
 
@@ -94,6 +98,7 @@
     font-size: 14px; 
     color: #666; 
     margin-bottom: 20px;
+    line-height: 1.5;
   }
 
   .contact-methods {
@@ -139,9 +144,9 @@
       </header>
 
       <div class="sidenav">
-	      <a href="index.html">Home</a>
+          <a href="index.html">Home</a>
           <a href="about.html">About</a>
-          <a href="brgy.html">Barangay's</a>
+          <a href="brgy.html">Barangays</a>
           <a href="download.html">Download App</a> 
       </div>
 
@@ -165,18 +170,26 @@
                           <label for="message">Your Message / Suggestion</label>
                           <textarea id="message" placeholder="Help us improve MosqDetecto..." required></textarea>
                       </div>
-                      <button type="submit" class="submit-btn">Send Feedback</button>
+                      <button type="submit" class="submit-btn" style="width: 100%; margin-bottom: 15px;">Send Feedback</button>
                   </form>
+                  
+                  <div style="text-align: center; border-top: 1px solid #eee; padding-top: 15px;">
+                      <p style="font-size: 13px; color: #666; margin-bottom: 10px;">Prefer using Google Forms directly?</p>
+                      <a href="https://forms.gle/CZZnT2VDngU2GXmq8" target="_blank" class="google-form-btn" style="width: 100%;">Open Google Form</a>
+                  </div>
               </div>
 
               <div class="info-card">
                   <h3>📞 Contact Information</h3>
                   <p class="info-description">
-                      Have questions about our vector tracing or want to report a breeding hotspot block in your local zone? Reach out to us directly:
+                      Have questions about our vector tracing or want to report a breeding hotspot block in your local zone? Reach out to us directly. 
+                  </p>
+                  <p class="info-description" style="background-color: #f4fbf4; padding: 12px; border-left: 4px solid darkgreen; border-radius: 4px;">
+                      <strong>Notice:</strong> We are truly grateful for your responses and to enhance and explain that we will like update or keep them update with the responses through their gmails. You can also submit reports natively via our <a href="https://forms.gle/CZZnT2VDngU2GXmq8" target="_blank" style="color: darkgreen; font-weight: bold;">Official Google Form</a> to guarantee immediate data logging.
                   </p>
                   <ul class="contact-methods">
                       <li><strong>Email:</strong> TripleA@gmail.com</li>
-                      <li><strong>Website:</strong> https://mosqdetecto.netlify.app</li>
+                      <li><strong>Website:</strong> https://angelfrancis143.github.io/mosqdetecto/</li>
                       <li><strong>Location:</strong> Jaro District, Iloilo City, Philippines</li>
                   </ul>
               </div>
@@ -192,7 +205,13 @@
       <script>
           document.getElementById('feedbackForm').addEventListener('submit', function(e) {
               e.preventDefault();
-              alert('Thank you for your feedback! Our team will look into this.');
+              
+              // Custom alert showing your message regarding Gmail updates
+              alert('Thank you for your feedback! We are truly grateful for your responses and to enhance and explain that we will like update or keep them update with the responses through their gmails.');
+              
+              // Automatically opens your Google Form in a new tab so they can fill it out safely if needed
+              window.open('https://forms.gle/CZZnT2VDngU2GXmq8', '_blank');
+              
               this.reset();
           });
       </script>
