@@ -38,15 +38,6 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     flex: 1;
     min-width: 300px;
-  }
-
-  .form-container-full {
-    width: 100%;
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-top: 20px;
     box-sizing: border-box;
   }
 
@@ -56,48 +47,6 @@
     margin-bottom: 15px;
     border-bottom: 2px solid #e2f0e2;
     padding-bottom: 8px;
-  }
-
-  /* Form spacing and inputs */
-  .form-group {
-    margin-bottom: 15px;
-  }
-
-  .form-group label {
-    display: block;
-    font-size: 14px;
-    font-weight: bold;
-    color: #444;
-    margin-bottom: 5px;
-  }
-
-  .form-group input, .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-
-  .form-group textarea {
-    resize: vertical;
-    height: 120px;
-  }
-
-  .submit-btn {
-    background-color: darkgreen;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .submit-btn:hover {
-    background-color: #004d00;
   }
 
   .info-description {
@@ -137,23 +86,13 @@
   footer strong {
     color: #ffffff;
   }
-  
- .form-container-full {
-  width: 100%;
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  margin-top: 20px;
-  box-sizing: border-box; /* Crucial to keep padding from breaking width limits */
-}
 
-/* Optional responsive tweak to handle iframe responsiveness smoothly */
-@media (max-width: 768px) {
-  .form-container-full {
-    padding: 15px; /* Shrinks container gaps slightly on smaller smartphone screens */
-  }
-} 
+  /* Responsive iframe container adjustments */
+  @media (max-width: 768px) {
+    .feedback-card {
+      padding: 15px;
+    }
+  } 
 </style>
 </head>
 
@@ -179,22 +118,20 @@
           <div class="contact-container">
               
               <div class="feedback-card">
-                  <h3>📩 Leave us a Feedback</h3>
-                  <form id="feedbackForm">
-                      <div class="form-group">
-                          <label for="name">Name (Optional)</label>
-                          <input type="text" id="name" placeholder="Your name">
-                      </div>
-                      <div class="form-group">
-                          <label for="email">Email Address</label>
-                          <input type="email" id="email" placeholder="username@email.com" required>
-                      </div>
-                      <div class="form-group">
-                          <label for="message">Your Message / Suggestion</label>
-                          <textarea id="message" placeholder="Help us improve MosqDetecto..." required></textarea>
-                      </div>
-                      <button type="submit" class="submit-btn">Send Feedback</button>
-                  </form>
+                  <h3>📝 Official Google Feedback Form</h3>
+                  <p class="info-description">
+                      We are truly grateful for your responses and to enhance and explain that we will like update or keep them update with the responses through their gmails.
+                  </p>
+                  <div style="width: 100%; overflow: hidden; border-radius: 8px; border: 1px solid #e2f0e2; -webkit-overflow-scrolling: touch;">
+                      <iframe 
+                          src="https://docs.google.com/forms/d/e/1FAIpQLSexxI4TPfSx3L-zFfZJ7kF2z--KiJyEOZlSHG7yyW51-xV29w/viewform?usp=dialog"
+                          width="100%" 
+                          height="800" 
+                          scrolling="yes"
+                          style="border: none; display: block; width: 100%;">
+                          Loading…
+                      </iframe>
+                  </div>
               </div>
 
               <div class="info-card">
@@ -211,37 +148,10 @@
 
           </div>
 
-         <div class="form-container-full">
-    <h3>📝 Official Google Feedback Form</h3>
-    <p class="info-description">
-        We are truly grateful for your responses and to enhance and explain that we will like update or keep them update with the responses through their gmails.
-    </p>
-    <div style="width: 100%; overflow: hidden; border-radius: 8px; border: 1px solid #e2f0e2; -webkit-overflow-scrolling: touch;">
-        <iframe 
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdf8CdfEon6zXpXNInWf3hZ86L9K9vHwz0lK45fCgY8wW4Y7g/viewform?embedded=true" 
-            width="100%" 
-            height="850" 
-            scrolling="yes"
-            style="border: none; display: block; width: 100%;">
-            Loading…
-        </iframe>
-    </div>
-</div>
-              </div>
-          </div>
-
           <footer>
               <div>&copy; 2026 <strong>MosqDetecto Project</strong>. All Rights Reserved.</div>
               <div>Designed and Developed by <strong>ViGuedenrus Defeater Team</strong>.</div>
           </footer>
       </div>
-
-      <script>
-          document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-              e.preventDefault();
-              alert('Thank you for your feedback! We are truly grateful for your responses and to enhance and explain that we will like update or keep them update with the responses through their gmails.');
-              this.reset();
-          });
-      </script>
 </body>
 </html>
