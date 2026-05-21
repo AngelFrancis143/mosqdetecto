@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>MosqDetecto</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    
+    <link rel="stylesheet" href="https://unpkg.com" />
+    <script src="https://unpkg.com"></script>
+
+<style>
+  .button {
+        padding: 11px 9px;
+        color: white;
+        text-decoration: none;
+        border-radius: 3px;
+        background-color: transparent; /* Removed the default white background */
+        transition: background-color 0.2s ease; /* Makes the color transition smooth */
+  }
+  .button:hover {
+        background-color: white; /* Becomes white when the cursor points to it */
+  }
+
+  /* FIXED: Map sizing to match your container's width */
+  #map {
+        height: 400px;
+        width: 100%;
+        max-width: 800px; /* Adjust this to match your .container width */
+        margin: 20px auto;
+        border-radius: 8px;
+        z-index: 1; /* Keeps map below header dropdowns if any */
+  }
+
+  /* Status Dot Styling */
+  .dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; }
+  .ok { background-color: #28a745; }
+  .err { background-color: #dc3545; }
+</style>
+</head>
+
+<body>
+      <header>
+          <img src="MOSQ1.png" width="50px" height="50px" id="logo" alt="Logo">
+          <h1>MOSQ DETECTO</h1>
+          <a href="settings.html" class="button"><img src="settings1.png" width="40px" height="40px" alt="Settings"></a> 
+      </header>
+      <div class="parent">
+           <div class="container">
+               
+               <div class="box2">
+                   <h4>TABUC SUBA, JARO DISTRICT</h4>
+                   <p id="pone">
+                       <strong>DESCRIPTION:</strong><br><br>
+                       
+                       <strong>The Place:</strong><br>
+                       Barangay Tabuc Suba is a large residential and commercial area located along major thoroughfares in Jaro, Iloilo City. It is bounded by the Jaro River and contains multiple low-lying areas. Because of the quick pace of subdivision developments and channels where rainwater can pool in clogged drainage ditches, it is an ideal environment for mosquitoes to breed if local residents aren't careful.<br><br>
+                       
+                       <strong>Dengue Situation:</strong><br>
+                       According to community surveillance data from the Iloilo City Health Office (CHO), Tabuc Suba is frequently marked as a critical area for dengue tracking during rainy cycles due to high population density. The neighborhood encounters periodic case clustering, meaning small groups of households in close proximity report infections around the same time. Consequently, health workers closely monitor localized transmission to eliminate breeding spots.<br><br>
+                       
+                       <strong>Health Efforts & Actions:</strong><br>
+                       • <em>Local Inspections:</em> Barangay Health Workers regularly carry out house-to-house 4S campaigns to help families locate and drain stagnant water in storage drums, flower pots, and plastic containers.<br>
+                       • <em>Targeted Spraying:</em> When active case clusters are detected, the city sanitation office deploys emergency misting or thermal fogging to suppress the adult mosquito population.<br>
+                       • <em>Early Checkups:</em> Community members are strongly advised to visit the Jaro health center immediately for diagnostic blood testing if they exhibit sudden high fevers, allowing for prompt medical care.
+                    </p>
+					
+				    
+               </div>
+           </div>
+      </div>
+
+      <div id="map"></div>
+
+      <div id="status-area" style="text-align: center; font-size: 12px; margin-bottom: 20px;">
+          <span id="status-dot" class="dot"></span> <span id="status-text">Connecting...</span>
+          <div id="last-updated"></div>
+      </div>
+
+	   <script>
+        const APP_URL    = 'http://localhost:7474/hotspots';
+        const REFRESH_MS = 30000; 
+
+        // Initialize Map
+        const map = L.map('map').setView([10.7202, 122.5621], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        const markerLayer = L.layerGroup().addTo(map);
+
+        function pinColor(risk) {
+          if (risk === 'High')   return '#dc3545';
+          if (risk === 'Medium') return '#fd7e14';
+          return '#28a745';
+        }
+
+        function makeIcon(risk) {
+          const c = pinColor(risk);
+          // FIXED: Backticks for multi-line SVG
+          const svg = `<svg xmlns="http://w3.org" viewBox="0 0 24 36" width="24" height="36">
+            <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24S24 21 24 12C24 5.4 18.6 0 12 0z" fill="${c}" stroke="#fff" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="5" fill="#fff" fill-opacity=".85"/>
+          </svg>`;
+          return L.divIcon({ html: svg, className: '', iconSize: [24,36], iconAnchor: [12,36], popupAnchor: [0,-38] });
+        }
+
+        function render(hotspots) {
+          markerLayer.clearLayers();
+          hotspots.forEach(h => {
+            if (h.lat == null || h.lng == null) return;
+            const detected = h.detections?.length ? h.detections.join(', ') : 'None detected';
+            const time     = h.time ? new Date(h.time).toLocaleString() : '—';
+            // FIXED: Backticks for template literal
+            const popup    = `<b>${h.barangay}</b><br>
+                              Area: ${h.area}<br>
+                              Risk: <b>${h.risk}</b> (score ${h.riskScore})<br>
+                              Detected: ${detected}<br>
+                              ${time}`;
+            L.marker([h.lat, h.lng], { icon: makeIcon(h.risk) })
+             .bindPopup(popup)
+             .addTo(markerLayer);
+          });
+          if (hotspots.length) map.panTo([hotspots[0].lat, hotspots[0].lng]);
+        }
+
+        async function fetchAndRender() {
+          const dot  = document.getElementById('status-dot');
+          const text = document.getElementById('status-text');
+          try {
+            const res  = await fetch(APP_URL, { cache: 'no-store' });
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const data = await res.json();
+            const hotspots = Array.isArray(data) ? data : (data.hotspots ?? []);
+            render(hotspots);
+            if(dot) dot.className = 'dot ok';
+            if(text) text.textContent = `Connected · ${hotspots.length} reports`;
+            document.getElementById('last-updated').textContent = 'Updated ' + new Date().toLocaleTimeString();
+          } catch (e) {
+            if(dot) dot.className = 'dot err';
+            if(text) text.textContent = 'App not reachable — open MosqDetecto on your device';
+          }
+        }
+
+        fetchAndRender();
+        setInterval(fetchAndRender, REFRESH_MS);
+      </script>
+	   <a href="brgy.html" class="bt2">Back</a>
+</body>
+</html>

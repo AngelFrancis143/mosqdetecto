@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles3.css">
+    <title>MosqDetecto</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<style>
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: darkgreen;
+    border-bottom: 1px solid #ddd;
+    position: fixed; /* Keeps header fixed at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 2;
+  }
+
+  .hero-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  }
+
+  .hero-text {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .hero-text h3 {
+    color: #1b4d3e;
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+
+  .hero-text p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .feature-card {
+    background: #f4f9f4;
+    border-left: 4px solid darkgreen;
+    padding: 12px;
+    border-radius: 4px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-2px);
+    background: #e2f0e2;
+  }
+
+  .feature-card strong {
+    color: darkgreen;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+
+  .feature-card span {
+    font-size: 12px;
+    color: #555555;
+  }
+
+  /* Side Graphics Panel Wrapper */
+  .hero-graphics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex: 0 0 280px;
+    margin: 0 auto;
+  }
+
+  .hero-graphics img.side-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
+  }
+
+  .combat-banner {
+    width: 100%;
+    height: 180px;
+    background-color: #e8f5e9;
+    border: 2px dashed #81c784;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .combat-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  .combat-banner span {
+    font-size: 13px;
+    color: #2e7d32;
+    font-weight: bold;
+  }
+</style>
+</head>
+
+<body>
+      <header>
+          <div style="display: flex; align-items: center; gap: 15px;">
+              <img src="MOSQ1.png" width="50px" height="50px" id="logo" alt="Logo">
+              <h1 style="margin: 0; font-size: 24px; color: lightgreen">MOSQ DETECTO</h1>
+          </div>
+          <a href="settings.html" class="button"><img src="settings1.png" width="40px" height="40px" alt="Settings"></a> 
+      </header>
+
+      <div class="sidenav">
+          <a href="about.html">About</a>
+          <a href="brgy.html">Barangay's</a>
+          <a href="download.html">Download App</a>
+          <a href="more.html">More</a>
+      </div>
+
+      <div class="main">
+          <h2>WELCOME TO OUR WEBSITE!</h2>
+          
+          <div class="hero-container">
+              
+              <div class="hero-text">
+                  <h3>Empowering Communities to Fight Dengue Together</h3>
+                  <p>
+                      Welcome to the home of <strong>MosqDetecto</strong>, a digital initiative built by team <em>ViGuedenrus Defeater</em>. 
+                      Our technology helps track local mosquito breeding vectors, eliminate stagnant water vulnerabilities, and lower transmission curves across Jaro District neighborhoods. Explore our modules below to interact with our real-time tracking network:
+                  </p>
+                  
+                  <div class="features-grid">
+                      <div class="feature-card" onclick="location.href='brgy.html'">
+                          <strong>📍 Real-Time Hotspots</strong>
+                          <span>View dynamic vector monitoring and data maps across target barangays.</span>
+                      </div>
+                      <div class="feature-card" onclick="location.href='about.html'">
+                          <strong>🛡️ Our Mission</strong>
+                          <span>Learn how our cross-inspections work to keep families safe.</span>
+                      </div>
+                      <div class="feature-card" onclick="location.href='download.html'">
+                          <strong>📲 Download System</strong>
+                          <span>Get the mobile application toolset directly onto your device.</span>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="hero-graphics">
+                  <img src="MOSQ1.png" class="side-logo" alt="MosqDetecto Center Logo">
+                  
+                  <div class="combat-banner">
+                      <img src="combat-dengue.png" alt="Fight Dengue Poster" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                      <span style="display:none;">[ Join the 4S Campaign:<br>Search & Destroy Breeding Sites ]</span>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+</body>
+</html>

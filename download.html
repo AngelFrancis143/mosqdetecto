@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles3.css">
+    <title>MosqDetecto — Download App</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<style>
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: darkgreen;
+    border-bottom: 1px solid #ddd;
+    position: fixed; /* Keeps header fixed at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 2;
+  }
+
+  .button {
+    padding: 11px 9px;
+    text-decoration: none;
+    border-radius: 3px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+  }
+  .button:hover {
+    background-color: white;
+  }
+
+  .download-flex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 25px 0;
+  }
+
+  .download-box {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    flex: 1;
+    min-width: 290px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  .download-box h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #1b4d3e;
+    font-size: 18px;
+  }
+
+  .download-box .action-label {
+    background-color: darkgreen;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  .drive-link {
+    word-break: break-all;
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1.5;
+    background: #f4f4f4;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px dashed #bbb;
+    margin: 15px 0;
+    display: block;
+    transition: color 0.2s, background-color 0.2s;
+  }
+  
+  .drive-link:hover {
+    color: #004499;
+    background-color: #eaeaea;
+    text-decoration: underline;
+  }
+
+  .qr-title {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  .step-note {
+    background-color: lightgreen;
+    border-left: 4px solid #4F7942;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #444;
+    margin-top: 20px;
+  }
+</style>
+</head>
+
+<body>
+      <header>
+          <div style="display: flex; align-items: center; gap: 15px;">
+              <img src="MOSQ1.png" width="50px" height="50px" id="logo" alt="Logo">
+              <h1 style="margin: 0; font-size: 24px; color: lightgreen">MOSQ DETECTO</h1>
+          </div>
+          <a href="settings.html" class="button"><img src="settings1.png" width="40px" height="40px" alt="Settings"></a> 
+      </header>
+
+      <div class="sidenav">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="brgy.html">Barangay's</a>
+          <a href="more.html">More</a>
+      </div>
+
+      <div class="main">
+          <h2>How to download our application?</h2>
+          <p>To download our application, you can either grab it via the secure Google Drive package file or scan the barcode graphic below to directly access the installation directory link.</p>
+          
+          <div class="download-flex-grid">
+              
+              <div class="download-box">
+                  <div>
+                      <h3>Option 1: Mobile Scanner</h3>
+                      <div class="qr-title">Mosq Detecto Application</div>
+                  </div>
+                  
+                  <img src="finalqr.png" width="140px" height="140px" style="margin: 10px 0;" alt="Application QR Code">
+                  
+                  <div class="action-label">Download Here</div>
+              </div>
+
+              <div class="download-box">
+                  <div>
+                      <h3>Option 2: Direct URL</h3>
+                      <p style="font-size: 13px; color: #666; margin: 5px 0 0 0;">Click the web link below to pull the setup files:</p>
+                  </div>
+                  
+                  <a href="https://drive.google.com/file/d/1Dyl8gj9Bmks01bBgB17L9V_P1gJwVbgb/view?fbclid=IwY2xjawR6vbxleHRuA2FlbQIxMABicmlkETFEMkpzZE1IblE4Yk5wcmtFc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHoDHJR3DUng6B2LZDZV6hctJm4_MM6UfsrF3A54GJfnc8oXccEx-bQfPB3U__aem_I6xNAwUyUiRdcXQI6bOH_Q" target="_blank" class="drive-link">
+                      https://drive.google.com/file/d/1Dyl8gj9Bmks01bBgB17L9V_P1gJwVbgb/view...
+                  </a>
+                  
+                  <a href="https://drive.google.com/file/d/1Dyl8gj9Bmks01bBgB17L9V_P1gJwVbgb/view?fbclid=IwY2xjawR6vbxleHRuA2FlbQIxMABicmlkETFEMkpzZE1IblE4Yk5wcmtFc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHoDHJR3DUng6B2LZDZV6hctJm4_MM6UfsrF3A54GJfnc8oXccEx-bQfPB3U__aem_I6xNAwUyUiRdcXQI6bOH_Q" target="_blank" style="text-decoration: none;">
+                      <div class="action-label" style="margin-bottom: 0; cursor: pointer;">Download Here</div>
+                  </a>
+              </div>
+
+          </div>
+
+          <div class="step-note">
+              <strong>Note:</strong> After the installation is complete, please ensure that you turned on your mobile device's location services (GPS) to allow real-time vector transmission logs to map properly to your local area dataset.
+          </div>
+      </div>
+</body>
+</html>

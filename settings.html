@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Settings</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fb;
+      color: #333;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    /* Layout Container */
+    .settings-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Header with Back Button */
+    .settings-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .btn-back {
+      text-decoration: none;
+      color: #007bff;
+      font-size: 16px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+
+    .btn-back:hover {
+      color: #0056b3;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #111;
+    }
+
+    /* Settings Card */
+    .settings-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+
+    /* Settings Row */
+    .settings-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+    }
+
+    .settings-row:not(:last-child) {
+      border-bottom: 1px solid #f9f9f9;
+    }
+
+    .settings-info {
+      padding-right: 15px;
+    }
+
+    .settings-label {
+      font-weight: 500;
+      font-size: 16px;
+      color: #222;
+    }
+
+    .settings-description {
+      font-size: 13px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    /* Form Inputs */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px; 
+      background-color: #fff;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+
+    /* Custom Toggle Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 28px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #007bff;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+
+    /* Action Button */
+    .btn-save {
+      display: block;
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-save:hover {
+      background-color: #0056b3;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+      .settings-card {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="settings-container">
+    <div class="settings-header">
+      <a href="cuartero.html" href="index.html" class="btn-back">&#8592; Back</a>
+      <h1>Settings</h1>
+    </div>
+
+    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Settings saved!');">
+      
+      <div class="settings-card">
+        <div class="section-title">Profile Information</div>
+        
+        <div class="form-group">
+          <label for="username">Full Name</label>
+          <input type="text" id="username" name="username" value="John Doe" placeholder="Your name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" value="johndoe@example.com" placeholder="Your email">
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <div class="section-title">Notifications</div>
+        
+        <div class="settings-row">
+          <div class="settings-info">
+            <div class="settings-label">Email Notifications</div>
+            <div class="settings-description">Receive weekly updates and activity summaries.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="settings-row">
+          <div class="settings-info">
+            <div class="settings-label">Push Notifications</div>
+            <div class="settings-description">Get instant alerts on your mobile device.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="settings-card">
+        <div class="section-title">Preferences</div>
+        
+        <div class="settings-row">
+          <div class="settings-info">
+            <div class="settings-label">Dark Mode</div>
+            <div class="settings-description">Switch to a darker theme to save battery.</div>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="form-group" style="margin-top: 15px;">
+          <label for="language">Language</label>
+          <select id="language" name="language">
+            <option value="en" selected>English</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-save">Save Changes</button>
+
+    </form>
+  </div>
+
+</body>
+</html>
