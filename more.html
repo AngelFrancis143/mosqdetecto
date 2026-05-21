@@ -28,7 +28,7 @@
     flex-wrap: wrap;
     gap: 30px;
     margin-top: 20px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
   }
 
   .feedback-card, .info-card {
@@ -38,6 +38,16 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     flex: 1;
     min-width: 300px;
+  }
+
+  .form-container-full {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 20px;
+    box-sizing: border-box;
   }
 
   h3 {
@@ -75,22 +85,18 @@
     height: 120px;
   }
 
-  .submit-btn, .google-form-btn {
-    display: inline-block;
+  .submit-btn {
     background-color: darkgreen;
     color: white;
-    text-decoration: none;
     border: none;
     padding: 12px 20px;
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.2s;
-    text-align: center;
-    box-sizing: border-box;
   }
 
-  .submit-btn:hover, .google-form-btn:hover {
+  .submit-btn:hover {
     background-color: #004d00;
   }
 
@@ -150,7 +156,7 @@
           <a href="download.html">Download App</a> 
       </div>
 
-      <div class="main">
+      <div class="main" style="margin-top: 80px; padding: 20px;">
           <h2>GET IN TOUCH</h2>
           
           <div class="contact-container">
@@ -170,22 +176,14 @@
                           <label for="message">Your Message / Suggestion</label>
                           <textarea id="message" placeholder="Help us improve MosqDetecto..." required></textarea>
                       </div>
-                      <button type="submit" class="submit-btn" style="width: 100%; margin-bottom: 15px;">Send Feedback</button>
+                      <button type="submit" class="submit-btn">Send Feedback</button>
                   </form>
-                  
-                  <div style="text-align: center; border-top: 1px solid #eee; padding-top: 15px;">
-                      <p style="font-size: 13px; color: #666; margin-bottom: 10px;">Prefer using Google Forms directly?</p>
-                      <a href="https://forms.gle/CZZnT2VDngU2GXmq8" target="_blank" class="google-form-btn" style="width: 100%;">Open Google Form</a>
-                  </div>
               </div>
 
               <div class="info-card">
                   <h3>📞 Contact Information</h3>
                   <p class="info-description">
-                      Have questions about our vector tracing or want to report a breeding hotspot block in your local zone? Reach out to us directly. 
-                  </p>
-                  <p class="info-description" style="background-color: #f4fbf4; padding: 12px; border-left: 4px solid darkgreen; border-radius: 4px;">
-                      <strong>Notice:</strong> We are truly grateful for your responses and to enhance and explain that we will like update or keep them update with the responses through their gmails. You can also submit reports natively via our <a href="https://forms.gle/CZZnT2VDngU2GXmq8" target="_blank" style="color: darkgreen; font-weight: bold;">Official Google Form</a> to guarantee immediate data logging.
+                      Have questions about our vector tracing or want to report a breeding hotspot block in your local zone? Reach out to us directly:
                   </p>
                   <ul class="contact-methods">
                       <li><strong>Email:</strong> TripleA@gmail.com</li>
@@ -194,6 +192,25 @@
                   </ul>
               </div>
 
+          </div>
+
+         <div class="form-container-full">
+    <h3>📝 Official Google Feedback Form</h3>
+    <p class="info-description">
+        We are truly grateful for your responses and to enhance and explain that we will like update or keep them update with the responses through their gmails.
+    </p>
+    <div style="width: 100%; overflow: hidden; border-radius: 8px; border: 1px solid #e2f0e2; -webkit-overflow-scrolling: touch;">
+        <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdf8CdfEon6zXpXNInWf3hZ86L9K9vHwz0lK45fCgY8wW4Y7g/viewform?embedded=true" 
+            width="100%" 
+            height="850" 
+            scrolling="yes"
+            style="border: none; display: block; width: 100%;">
+            Loading…
+        </iframe>
+    </div>
+</div>
+              </div>
           </div>
 
           <footer>
@@ -205,13 +222,7 @@
       <script>
           document.getElementById('feedbackForm').addEventListener('submit', function(e) {
               e.preventDefault();
-              
-              // Custom alert showing your message regarding Gmail updates
               alert('Thank you for your feedback! We are truly grateful for your responses and to enhance and explain that we will like update or keep them update with the responses through their gmails.');
-              
-              // Automatically opens your Google Form in a new tab so they can fill it out safely if needed
-              window.open('https://forms.gle/CZZnT2VDngU2GXmq8', '_blank');
-              
               this.reset();
           });
       </script>
